@@ -9,9 +9,9 @@ typedef struct {
     int id;
     char name[20];
     KtasLevel ktas;
-    int detail_score;       // �ǵ�� �ݿ� ����: ���� KTAS �� ���� ������ (1~10��)
+    int detail_score;       // 피드백 반영 사항: 동일 KTAS 내 세부 중증도 (1~10점)
     int arrival_time;
-    int priority_score;     // ���� ����: (KTAS * 10000) + (detail_score * 100)
+    int priority_score;     // 점수 공식: (KTAS * 10000) + (detail_score * 100)
     PatientStatus status;
 } Patient;
 
