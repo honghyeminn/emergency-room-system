@@ -4,7 +4,7 @@
 
 #define TABLE_SIZE 100
 
-// �ؽ� ���̺� �迭 (������ �迭 �ƴ�, ���� ����)
+// 해시 테이블 배열 (포인터 배열 아님, 직접 저장)
 Patient hashTable[TABLE_SIZE];
 
 void initHash() {
@@ -20,7 +20,7 @@ int hashFunction(int id) {
 void insertHash(Patient p) {
     int index = hashFunction(p.id);
 
-    // �� �ڸ��� ã�� ������ �̵�
+    // 빈 자리를 찾을 때까지 이동
     while (hashTable[index].id != -1) {
         index = (index + 1) % TABLE_SIZE;
     }
@@ -33,11 +33,11 @@ Patient* searchHash(int id) {
 
     while (hashTable[index].id != -1) {
         if (hashTable[index].id == id) {
-            return &hashTable[index]; // �ּ� ��ȯ
+            return &hashTable[index]; // 주소 반환
         }
         index = (index + 1) % TABLE_SIZE;
-        // �� ���� �� �������� ����
+        // 한 바퀴 다 돌았으면 종료
         if (index == startIndex) break;
     }
-    return NULL; // �� ã���� ���
+    return NULL; // 못 찾았을 경우
 }
